@@ -1,10 +1,9 @@
-import $ from "jquery";
-
+import $ from 'jquery';
 
 $(document).ready(function() {
-    var parrafo1 = $("<p>").text("Holberton Dashboard");
-    var parrafo2 = $("<p>").text("Dashboard data for the students");
-    var parrafo3 = $("<p>").text("Copyright - Holberton School");
+  const parrafo1 = $('<p>').text('Holberton Dashboard');
+  const parrafo2 = $('<p>').text('Dashboard data for the students');
+  const parrafo3 = $('<p>').text('Copyright - Holberton School');
 
-    $("body").append(parrafo1, parrafo2, parrafo3);
+  $('body').append(parrafo1, parrafo2, parrafo3);
 });
