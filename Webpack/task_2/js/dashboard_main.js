@@ -12,6 +12,7 @@ function updateCounter() {
 
 // Function to add the HTML elements to the body of the document
 function addDashboardElements() {
+    // Add the logo element
     $('body').append('<div id="logo"></div>');
     // Add the first paragraph
     $('body').append('<p>Holberton Dashboard</p>');
