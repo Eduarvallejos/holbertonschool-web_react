@@ -1,5 +1,4 @@
-const path = require('path')
-
+const path = require('path');
 
 module.exports = {
     mode: 'production',
@@ -17,16 +16,10 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name:'[name].[ext]',
-                            outputPath: 'images/',
-                            publicPath: 'images/',
-                        },
-                    },
-                ],
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][ext]',
+                },
             },
         ],
     },
