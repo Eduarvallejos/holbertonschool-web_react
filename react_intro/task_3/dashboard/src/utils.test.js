@@ -1,4 +1,4 @@
-
+// This script tests the utils.js file
 import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
 
 describe('Utils functions', () => {
