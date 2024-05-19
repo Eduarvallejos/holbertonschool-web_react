@@ -1,13 +1,22 @@
 
 .Notifications {
-    border: 2px solid #292828;
+    border: 2px dotted red;
     padding: 10px;
+    padding-left: 2px;
     margin: 10px;
     background-color: #f9f9f9;
   }
   
-  .Notifications p {
+.Notifications p {
     margin: 0;
-    font-size: 16px;
+    font-size: 1.02rem;
+    padding-top: 5px;
   }
   
+li[data-priority="default"] {
+  color: blue;
+}
+
+li[data-priority="urgent"] {
+  color: red;
+}
