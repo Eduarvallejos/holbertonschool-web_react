@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
@@ -22,7 +22,16 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
-                type: 'asset/resource',
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true,
+                            disable: true,
+                        },
+                    },
+                ],
             },
         ],
     },
@@ -34,7 +43,7 @@ module.exports = {
     ],
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.resolve(__dirname, '../dist'),
+        static: path.resolve(__dirname, '../dist'),
         hot: true,
       },
 };
