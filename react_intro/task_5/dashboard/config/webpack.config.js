@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
@@ -12,9 +11,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
             },
             {
                 test: /\.css$/,
@@ -35,15 +33,19 @@ module.exports = {
             },
         ],
     },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../dist/index.html'),
-        }),
         new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, '../public/index.html'),
+        }),
     ],
     devtool: 'inline-source-map',
     devServer: {
-        static: path.resolve(__dirname, '../dist'),
+        static: '../dist',
         hot: true,
+        open: true,
       },
 };
