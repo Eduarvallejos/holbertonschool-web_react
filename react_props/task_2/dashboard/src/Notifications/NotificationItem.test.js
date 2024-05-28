@@ -16,8 +16,9 @@ describe('NotificationItem Component', () => {
   });
 
   it('renders correct HTML with dummy html prop', () => {
+    const type = 'default';
     const html = { __html: '<u>test</u>' };
-    const wrapper = shallow(<NotificationItem html={html} />);
+    const wrapper = shallow(<NotificationItem type={type} html={html} />);
     expect(wrapper.find('li').prop('dangerouslySetInnerHTML')).toEqual(html);
   });
 });

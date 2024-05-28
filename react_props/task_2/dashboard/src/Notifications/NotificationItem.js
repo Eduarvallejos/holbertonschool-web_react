@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NotificationItem = ({ type, html, value }) => {
+const NotificationItem = ({ type = 'default', html = null, value = '' }) => {
   if (html) {
     return (
       <li data-notification-type={type} dangerouslySetInnerHTML={html}></li>
@@ -20,10 +20,6 @@ NotificationItem.propTypes = {
   value: PropTypes.string,
 };
 
-NotificationItem.defaultProps = {
-  type: 'default',
-  html: null,
-  value: '',
-};
+
 
 export default NotificationItem;
