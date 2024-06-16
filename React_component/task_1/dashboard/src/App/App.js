@@ -10,7 +10,7 @@ import './App.css'
 
 class App extends Component{
   static proptypes = {
-    logOut: Proptypes.fun
+    logOut: Proptypes.func
   };
 
   static defaultProps = {
