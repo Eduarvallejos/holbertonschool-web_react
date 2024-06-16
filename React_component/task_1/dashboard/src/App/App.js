@@ -17,10 +17,13 @@ class App extends Component{
     logOut: () => {}
   };
 
+  
+  // Add the listener for the keydown event
   ComponentDidMount() {
     document.addEventListener('keydown', this.handlekeyDown);
   }
 
+  // Clear the keydown event listener when the component is unmounted
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handlekeyDown);
   }
