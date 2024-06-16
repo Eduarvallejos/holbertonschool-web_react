@@ -1,6 +1,6 @@
 /* update Class App */
 import React, {Component} from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
@@ -9,8 +9,8 @@ import './App.css'
 
 
 class App extends Component{
-  static proptypes = {
-    logOut: Proptypes.func
+  static propTypes = {
+    logOut: PropTypes.func
   };
 
   static defaultProps = {
