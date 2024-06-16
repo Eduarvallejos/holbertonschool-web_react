@@ -5,7 +5,6 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import './App.css'
 
-const isIndex = true;
 class App extends Component{
   render () {
     return (
