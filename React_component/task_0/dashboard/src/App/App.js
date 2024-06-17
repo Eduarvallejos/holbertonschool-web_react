@@ -1,23 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './App.css';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import './App.css'
+import CourseList from '../CourseList/CourseList';
 
-class App extends Component{
-  render () {
+class App extends Component {
+  render() {
+    const { isLoggedIn = false } = this.props;
+
     return (
-      <React.Fragment>
-        <Notifications />
-        <div className="App">
+      <div className="App">
+        <div className="headerWithNotifications">
+          <Notifications />
           <Header />
-          <Login />
-          <Footer />
         </div>
-      </React.Fragment>
+        {isLoggedIn ? <CourseList /> : <Login />}
+        <Footer />
+      </div>
     );
   }
 }
+
+App.propTypes = {
+  isLoggedIn: PropTypes.bool,
+};
 
 export default App;
