@@ -1,0 +1,13 @@
+export function getFullYear() {
+    const date = new Date();
+    const Anio = date.getFullYear();
+    return Anio;
+}
+
+export function getFooterCopy(isIndex) {
+    return isIndex ? 'Holberton School' : 'Holberton School main dashboard';
+}
+
+export function getLatestNotification() {
+    return '<strong>Urgent requirement</strong> - complete by EOD'
+}

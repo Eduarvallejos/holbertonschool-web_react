@@ -1,0 +1,9 @@
+.App-footer{
+    text-align: center;
+    padding: 10px;
+    border-top: 3px solid red;
+    position: sticky;
+    width: 100%;
+    font-size: 1rem;
+    font-family: cursive;
+  }
