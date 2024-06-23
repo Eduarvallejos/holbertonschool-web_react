@@ -37,10 +37,10 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html'),
         }),
+        new CleanWebpackPlugin(),
     ],
     devtool: 'inline-source-map',
     devServer: {
