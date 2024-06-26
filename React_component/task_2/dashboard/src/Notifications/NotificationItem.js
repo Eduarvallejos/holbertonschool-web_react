@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const NotificationItem = ({ id, type = 'default', html = null, value = '', markAsRead }) => {
-  const handleClick = () => {
-    markAsRead(id);
-  };
+class NotificationItem extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  if (html) {
+  handleClick() {
+    const { id, markAsRead } = this.props;
+    markAsRead(id);
+  }
+
+  render() {
+    const { type, html, value } = this.props;
+
+    if (html) {
+      return (
+        <li data-notification-type={type} dangerouslySetInnerHTML={html} onClick={this.handleClick}></li>
+      );
+    }
+
     return (
-      <li data-notification-type={type} dangerouslySetInnerHTML={html} onClick={handleClick}></li>
+      <li data-notification-type={type} onClick={this.handleClick}>{value}</li>
     );
   }
-  return (
-    <li data-notification-type={type} onClick={handleClick}>{value}</li>
-  );
-};
+}
 
 NotificationItem.propTypes = {
   id: PropTypes.number,
@@ -24,6 +35,13 @@ NotificationItem.propTypes = {
   }),
   value: PropTypes.string,
   markAsRead: PropTypes.func,
+};
+
+NotificationItem.defaultProps = {
+  type: 'default',
+  html: null,
+  value: '',
+  markAsRead: () => {},
 };
 
 export default NotificationItem;
