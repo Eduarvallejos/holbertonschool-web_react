@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, css} from 'aphrodite'
+import { StyleSheet, css } from 'aphrodite';
 import Notifications from '../Notifications/Notifications';
 import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
@@ -11,9 +11,9 @@ import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBot
 import WithLogging from '../HOC/WithLogging';
 
 const listCourses = [
-  {id: 1, name: 'ES6', credit: 60},
-  {id: 2, name: 'Webpack', credit: 20},
-  {id: 3, name: 'React', credit: 40},
+  { id: 1, name: 'ES6', credit: 60 },
+  { id: 2, name: 'Webpack', credit: 20 },
+  { id: 3, name: 'React', credit: 40 },
 ];
 
 const listNotifications = [
@@ -27,11 +27,19 @@ const styles = StyleSheet.create({
     margin: '10px',
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100%',
+    minHeight: '100vh',
+  },
+  body: {
+    flex: 1,
+  },
+  footer: {
+    borderTop: '1px solid #ccc',
+    padding: '10px 0',
+    textAlign: 'center',
   },
 });
 
-class App extends Component{
+class App extends Component {
   constructor(props) {
     super(props);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -46,34 +54,36 @@ class App extends Component{
   }
 
   handleKeyDown(event) {
-    const {logOut} = this.props;
+    const { logOut } = this.props;
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
       logOut();
     }
   }
-  render(){
-    const{ isLoggedIn = false} = this.props
+
+  render() {
+    const { isLoggedIn = false } = this.props;
     return (
       <div className={css(styles.App)}>
         <div className="headerWithNotifications">
-          <Notifications listNotifications={listNotifications}/>
+          <Notifications listNotifications={listNotifications} />
           <Header />
         </div>
-        {isLoggedIn ? (
-        <BodySectionWithMarginBottom title="Course list">
-          <CourseList listCourses={listCourses}/> 
-        </BodySectionWithMarginBottom>
-        ):(
-        <BodySectionWithMarginBottom title="Log in to continue">
-          <Login />
-        </BodySectionWithMarginBottom>
-        )}
-        <BodySection title="News from the School">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </BodySection>
-
-        <Footer />
+        <div className={css(styles.body)}>
+          {isLoggedIn ? (
+            <BodySectionWithMarginBottom title="Course list">
+              <CourseList listCourses={listCourses} />
+            </BodySectionWithMarginBottom>
+          ) : (
+            <BodySectionWithMarginBottom title="Log in to continue">
+              <Login />
+            </BodySectionWithMarginBottom>
+          )}
+          <BodySection title="News from the School">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </BodySection>
+        </div>
+        <Footer className={css(styles.footer)} />
       </div>
     );
   }
