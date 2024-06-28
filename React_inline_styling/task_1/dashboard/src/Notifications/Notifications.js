@@ -18,21 +18,10 @@ const styles = StyleSheet.create({
     padding: '10px',
   },
   text: {
-    margin: '0',
+    margin: '0px',
     fontSize: '1.02rem',
     paddingTop: '5px',
     paddingLeft: '5px',
-  },
-  ul: {
-    paddingLeft: '25px'
-  },
-  liDefault: {
-    color: 'blue',
-    paddingLeft: '0px'
-  },
-  liUrgent: {
-    color: 'red',
-    paddingLeft: '0px'
   },
 });
 
@@ -77,17 +66,11 @@ class Notifications extends Component {
               x
             </button>
             <p className={css(styles.text)}>Here is the list of notifications</p>
-            <ul className={css(styles.ul)}> 
+            <ul> 
               {listNotifications.length === 0 ? (
                 <NotificationItem type="default" value="No new notification for now" />
               ) : (
                 listNotifications.map(notification => (
-                  <ul
-                    key={notification.id}
-                    className={css(
-                      notification.type === 'default' ? styles.liDefault : styles.liUrgent
-                    )}
-                  >
                     <NotificationItem
                       id={notification.id}
                       type={notification.type}
@@ -95,7 +78,6 @@ class Notifications extends Component {
                       html={notification.html}
                       markAsRead={this.markAsRead}
                     />
-                  </ul>
                 ))
               )}
             </ul>
