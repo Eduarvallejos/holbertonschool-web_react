@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         padding: '10px',
         paddingLeft: '20px',
         fontFamily: '"segoe IU", sans-serif',
+        margin: '10px'
     },
 });
 
