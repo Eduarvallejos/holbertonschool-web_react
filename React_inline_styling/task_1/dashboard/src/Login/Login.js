@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, css } from 'aphrodite';
-//import './Login.css';
 
 const styles = StyleSheet.create({
     AppBody: {
