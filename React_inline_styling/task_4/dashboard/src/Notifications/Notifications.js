@@ -99,7 +99,7 @@ class Notifications extends Component {
             <p className={css(styles.text)}>Here is the list of notifications</p>
             <ul className={css(styles.ul)}> 
               {listNotifications.length === 0 ? (
-                <NotificationItem type="default" value="No new notifications for now" />
+                <NotificationItem type="default" value="No new notification for now" />
               ) : (
                 listNotifications.map(notification => (
                   <NotificationItem
