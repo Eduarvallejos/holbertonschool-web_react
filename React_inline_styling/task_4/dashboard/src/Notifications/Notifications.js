@@ -13,14 +13,14 @@ const bounce = {
   '45%, 50%': { transform: 'translateY(5px)' },
   '50%': { transform: 'translateY(-5px)' },
 };
+
 const styles = StyleSheet.create({
   MenuItem: {
     textAlign: 'right',
     top: '0',
     right: '0',
-    marginRight: '20px',
     padding: '10px',
-    position: 'fixed',
+    float: 'right',
     backgroundColor: '#fff8f8',
     cursor: 'pointer',
     zIndex: '1001',
@@ -32,27 +32,41 @@ const styles = StyleSheet.create({
     ':hover + div': {
       display: 'block',
     },
-
   },
   Notifications: {
-    position: 'fixed',
     top: '0',
     right: '0',
-    marginRight: '20px',
     border: '2px dotted red',
+    padding: '10px',
+    paddingLeft: '2px',
+    margin: '5px',
     backgroundColor: '#f9f9f9',
+    float: 'right',
     zIndex: '1000',
     display: 'none',
+    '@media (max-width: 900px)': {
+      position: 'fixed',
+      display: 'block',
+      top: '0',
+      right: '0',
+      bottom: '0',
+      left: '0',
+    }
   },
   text: {
     margin: '0px',
-    fontSize: '20px',
+    fontSize: '1.02rem',
     paddingTop: '5px',
     paddingLeft: '5px',
+    '@media (max-width: 900px)': {
+      fontSize: '20px',
+    },
   },
   ul: {
-    padding: '0',
-    listStyleType: 'none',
+    '@media (max-width: 900px)': {
+      padding: '0',
+      listStyleType: 'none',
+    },
   },
 });
 
@@ -76,7 +90,7 @@ class Notifications extends Component {
   }
 
   render() {
-    const { displayDrawer = true, listNotifications = [] } = this.props;
+    const { displayDrawer, listNotifications } = this.props;
     return (
       <React.Fragment>
         <div className={css(styles.MenuItem)} id='menuItem'>
@@ -99,7 +113,7 @@ class Notifications extends Component {
             <p className={css(styles.text)}>Here is the list of notifications</p>
             <ul className={css(styles.ul)}> 
               {listNotifications.length === 0 ? (
-                <NotificationItem type="default" value="No new notification for now" />
+                <NotificationItem type="default" value="No new notifications for now" />
               ) : (
                 listNotifications.map(notification => (
                   <NotificationItem
@@ -125,5 +139,9 @@ Notifications.propTypes = {
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
 };
 
+Notifications.defaultProps = {
+  displayDrawer: true,
+  listNotifications: [],
+};
 
 export default Notifications;
