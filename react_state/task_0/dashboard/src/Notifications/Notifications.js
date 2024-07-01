@@ -13,10 +13,12 @@ const bounce = {
   '45%, 50%': { transform: 'translateY(5px)' },
   '50%': { transform: 'translateY(-5px)' },
 };
+
 const styles = StyleSheet.create({
   MenuItem: {
     textAlign: 'right',
     position: 'fixed',
+    float: 'right',
     top: '0',
     right: '0',
     marginRight: '20px',
@@ -29,42 +31,43 @@ const styles = StyleSheet.create({
       animationDuration: '1s, 0.5s',
       animationIterationCount: '3',
     },
-    '@media (max-width: 900px)': {
-    top: '0',
-    right: '0',
-    marginRight: '20px',
-    marginTop: '20px',
-    backgroundColor: '#fff8f8',
-    cursor: 'pointer',
-    zIndex: '1000',
-    ':hover': {
-      animationName: [fadeIn, bounce],
-      animationDuration: '1s, 0.5s',
-      animationIterationCount: '3',
-    },
-  }
-
   },
+
   Notifications: {
     position: 'fixed',
-    top: '20px',
-    right: '0',
-    marginRight: '20px',
+    float: 'right',
+    top: '10px',
+    right: '10px',
     border: '2px dotted red',
+    padding: '10px',
+    paddingLeft: '2px',
+    margin: '5px',
     backgroundColor: '#f9f9f9',
     zIndex: '1000',
-  },
-  text: {
     '@media (max-width: 900px)': {
-    margin: '0px',
-    fontSize: '20px',
-    paddingTop: '5px',
-    paddingLeft: '5px',
+      top: '0',
+      right: '0',
+      left: '0',
+      border: '0',
+      bottom: '0',
+      margin: 0,
+      padding: 0,
     }
   },
+  text: {
+    margin: '0px',
+    fontSize: '1.02rem',
+    paddingTop: '5px',
+    paddingLeft: '5px',
+    '@media (max-width: 900px)': {
+      fontSize: '20px',
+    },
+  },
   ul: {
-    padding: '0',
-    listStyleType: 'none',
+    '@media (max-width: 900px)': {
+      padding: '0',
+      listStyleType: 'none',
+    },
   },
 });
 
@@ -77,7 +80,7 @@ class Notifications extends Component {
 
   handleClick() {
     console.log('Close button has been clicked');
-    this.props.handleHideDrawer();
+    this.props.handleHideDrawer(); // Aquí ocultas el drawer de notificaciones
   }
 
   markAsRead(id) {
@@ -92,9 +95,7 @@ class Notifications extends Component {
   }
 
   render() {
-    const { displayDrawer, listNotifications = [], handleDisplayDrawer,} = this.props;
-    console.log('Display Drawer:', displayDrawer);
-    console.log('Display Drawer:', handleDisplayDrawer);
+    const { displayDrawer, listNotifications = [], handleDisplayDrawer } = this.props;
     return (
       <React.Fragment>
         <div className={css(styles.MenuItem)} id='menuItem' onClick={handleDisplayDrawer}>
@@ -141,9 +142,8 @@ class Notifications extends Component {
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
-  handleDisplayDrawer: PropTypes.func,
-  handleHideDrawer: PropTypes.func,
+  handleDisplayDrawer: PropTypes.func.isRequired,
+  handleHideDrawer: PropTypes.func.isRequired,
 };
-
 
 export default Notifications;
