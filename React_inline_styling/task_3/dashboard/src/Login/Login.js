@@ -14,14 +14,18 @@ const styles = StyleSheet.create({
         },
     },
     formGroup: {
+        '@media (max-width: 900px)': {
         width: '10%',
         display: 'flex',
         flexDirection: 'column',
         marginBottom: '10px',
+        }
     },
     button: {
+        '@media (max-width: 900px)': {
         marginTop: '10px',
         cursor: 'pointer',
+        }
     },
 });
 

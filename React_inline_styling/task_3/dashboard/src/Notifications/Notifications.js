@@ -10,6 +10,13 @@ const styles = StyleSheet.create({
     padding: '10px',
   },
   Notifications: {
+    border: '2px dotted red',
+    padding: '10px',
+    paddingLeft: '2px',
+    margin: '5px',
+    backgroundColor: '#f9f9f9',
+    float: 'right',
+    '@media (max-width: 900px)': {
     position: 'fixed',
     top: '0',
     right: '0',
@@ -18,16 +25,25 @@ const styles = StyleSheet.create({
     border: '2px dotted red',
     backgroundColor: '#f9f9f9',
     zIndex: '1000',
+    }
   },
   text: {
+    margin: '0px',
+    fontSize: '1.02rem',
+    paddingTop: '5px',
+    paddingLeft: '5px',
+    '@media (max-width: 900px)': {
     margin: '0px',
     fontSize: '20px',
     paddingTop: '5px',
     paddingLeft: '5px',
+    }
   },
   ul: {
+    '@media (max-width: 900px)': {
     padding: '0',
     listStyleType: 'none',
+    }
   },
 });
 

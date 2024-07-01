@@ -5,17 +5,21 @@ import { StyleSheet, css } from 'aphrodite';
 const styles = StyleSheet.create({
   defaultItem: {
     color: 'blue',
+    '@media (max-width: 900px)': {
     borderBottom: '1px solid black',
     fontSize: '20px',
     padding: '10px 8px',
     boxSizing: 'border-box',
+    }
   },
   urgentItem: {
     color: 'red',
+    '@media (max-width: 900px)': {
     borderBottom: '1px solid black',
     fontSize: '20px',
     padding: '10px 8px',
     boxSizing: 'border-box',
+    }
   },
 });
 
