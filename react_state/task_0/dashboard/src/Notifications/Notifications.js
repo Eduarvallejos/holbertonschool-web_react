@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop: '20px',
     backgroundColor: '#fff8f8',
     cursor: 'pointer',
-    zIndex: '1000',
+    zIndex: '1001',
     ':hover': {
       animationName: [fadeIn, bounce],
       animationDuration: '1s, 0.5s',
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
       left: '0',
       border: '0',
       bottom: '0',
-      margin: 0,
-      padding: 0,
+      margin: '0',
+      padding: '0',
     }
   },
   text: {
@@ -80,7 +80,7 @@ class Notifications extends Component {
 
   handleClick() {
     console.log('Close button has been clicked');
-    this.props.handleHideDrawer(); // Aquí ocultas el drawer de notificaciones
+    this.props.handleHideDrawer();
   }
 
   markAsRead(id) {
@@ -98,9 +98,11 @@ class Notifications extends Component {
     const { displayDrawer, listNotifications = [], handleDisplayDrawer } = this.props;
     return (
       <React.Fragment>
-        <div className={css(styles.MenuItem)} id='menuItem' onClick={handleDisplayDrawer}>
-          Your notifications
-        </div>
+        {!displayDrawer && (
+          <div className={css(styles.MenuItem)} id='menuItem' onClick={handleDisplayDrawer}>
+            Your notifications
+          </div>
+        )}
         {displayDrawer && (
           <div className={css(styles.Notifications)} id='Notifications'>
             <button
@@ -142,8 +144,8 @@ class Notifications extends Component {
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
-  handleDisplayDrawer: PropTypes.func.isRequired,
-  handleHideDrawer: PropTypes.func.isRequired,
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 export default Notifications;
